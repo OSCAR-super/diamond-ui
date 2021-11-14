@@ -1,6 +1,8 @@
 <template>
 <div>
-<home></home>
+  <div v-if="current == 'mine'">
+    <home></home>
+  </div>
 <i-tab-bar class="flex" :current="current" color="#f759ab" @change="handleChange">
     <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
     <i-tab-bar-item key="group" icon="group" current-icon="group_fill" title="朋友"></i-tab-bar-item>
