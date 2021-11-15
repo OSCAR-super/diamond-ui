@@ -3,7 +3,7 @@
 <i-row>
     <i-col span="18" i-class="col-class">
         <i-panel title="圆角输入框">
-          <i-input :value="value1" type="number" mode="wrapped" placeholder="请输入搜索词" />
+          <i-input :value="value1" maxlength="100" type="number" mode="wrapped" placeholder="请输入搜索词" />
         </i-panel>
     </i-col>
     <i-col span="5" i-class="col-class">
