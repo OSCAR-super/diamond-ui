@@ -1,60 +1,60 @@
 {
-  "description": "项目配置文件。",
-  "setting": {
-    "urlCheck": true,
-    "es6": true,
-    "enhance": true,
-    "postcss": true,
-    "preloadBackgroundData": false,
-    "minified": true,
-    "newFeature": true,
-    "coverView": true,
-    "nodeModules": false,
-    "autoAudits": false,
-    "showShadowRootInWxmlPanel": true,
-    "scopeDataCheck": false,
-    "uglifyFileName": false,
-    "checkInvalidKey": true,
-    "checkSiteMap": true,
-    "uploadWithSourceMap": true,
-    "compileHotReLoad": false,
-    "lazyloadPlaceholderEnable": false,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": true,
-    "babelSetting": {
-      "ignore": [],
-      "disablePlugins": [],
-      "outputPath": ""
+    "description": "项目配置文件。",
+    "setting": {
+        "urlCheck": true,
+        "es6": true,
+        "enhance": true,
+        "postcss": true,
+        "preloadBackgroundData": false,
+        "minified": true,
+        "newFeature": true,
+        "coverView": true,
+        "nodeModules": false,
+        "autoAudits": false,
+        "showShadowRootInWxmlPanel": true,
+        "scopeDataCheck": false,
+        "uglifyFileName": false,
+        "checkInvalidKey": true,
+        "checkSiteMap": true,
+        "uploadWithSourceMap": true,
+        "compileHotReLoad": false,
+        "lazyloadPlaceholderEnable": false,
+        "useMultiFrameRuntime": true,
+        "useApiHook": true,
+        "useApiHostProcess": true,
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        },
+        "enableEngineNative": false,
+        "useIsolateContext": true,
+        "userConfirmedBundleSwitch": false,
+        "packNpmManually": false,
+        "packNpmRelationList": [],
+        "minifyWXSS": true,
+        "disableUseStrict": false,
+        "minifyWXML": true,
+        "showES6CompileOption": false,
+        "useCompilerPlugins": false
     },
-    "enableEngineNative": false,
-    "useIsolateContext": true,
-    "userConfirmedBundleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
-    "minifyWXSS": true,
-    "disableUseStrict": false,
-    "showES6CompileOption": false,
-    "useCompilerPlugins": false,
-    "minifyWXML": true
-  },
-  "miniprogramRoot": "dist/",
-  "compileType": "miniprogram",
-  "appid": "wxe2224d0c6d2d11f9",
-  "projectname": "diamond-ui",
-  "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
-    "game": {
-      "currentL": -1,
-      "list": []
-    },
-    "miniprogram": {
-      "list": []
+    "miniprogramRoot": "dist/",
+    "compileType": "miniprogram",
+    "appid": "wxe2224d0c6d2d11f9",
+    "projectname": "diamond-ui",
+    "condition": {
+        "search": {
+            "list": []
+        },
+        "conversation": {
+            "list": []
+        },
+        "game": {
+            "currentL": -1,
+            "list": []
+        },
+        "miniprogram": {
+            "list": []
+        }
     }
-  }
 }
