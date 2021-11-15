@@ -1,5 +1,11 @@
 <template>
 <div>
+  <div v-if="current == 'remind'">
+    <smile></smile>
+  </div>
+  <div v-if="current == 'homepage'">
+    <indexpage></indexpage>
+  </div>
   <div v-if="current == 'mine'">
     <home></home>
   </div>
@@ -13,7 +19,8 @@
 </template>
 <script>
 import home from '@/components/home'
-
+import indexpage from '@/components/indexpage'
+import smile from '@/components/smile'
 export default {
   data () {
     return {
@@ -21,7 +28,9 @@ export default {
     }
   },
   components: {
-    home
+    home,
+    indexpage,
+    smile
   },
   methods: {
     handleChange (detail) {
