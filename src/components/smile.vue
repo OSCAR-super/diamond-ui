@@ -14,7 +14,7 @@
         <i-rate 
             disabled="true"
             :value="starIndex">
-            4星
+            xx年xx月xx日
         </i-rate>
     </i-cell>
 </i-cell-group>
