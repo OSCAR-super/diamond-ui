@@ -3,11 +3,11 @@
 <i-row>
     <i-col span="18" i-class="col-class">
         <i-panel title="圆角输入框">
-          <i-input :value="value1" maxlength="100" type="text" mode="wrapped" placeholder="请输入搜索词" />
+          <i-input :value="searchWords" @change="inputWords" maxlength="100" type="text" mode="wrapped" placeholder="请输入搜索词" />
         </i-panel>
     </i-col>
     <i-col span="5" i-class="col-class">
-      <i-button bind inline="true" class = "searching" :click="handleClick" type="primary" shape="square" size="small">搜索</i-button>
+      <i-button bind inline="true" class = "searching" :click="handleClick" type="primary" shape="square" size="small" @click="search">搜索</i-button>
     </i-col>
 </i-row>
 <div v-for="count in 2">
@@ -34,11 +34,18 @@
 export default {
   data () {
     return {
-      value1: '',
+      searchWords: '',
       current: 1
     }
   },
   methods: {
+    inputWords (detail) {
+      this.searchWords = detail.mp.detail.detail.value
+    },
+    search () {
+      console.log(this.searchWords)
+      this.$router.push({ path: '/pages/searching', query: { searchWords: this.searchWords } })
+    },
     pageChange (detail) {
       if (detail.mp.detail.type === 'next' && this.current !== 5) {
         this.current++

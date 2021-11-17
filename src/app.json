@@ -6,6 +6,9 @@
         "navigationBarTitleText": "diamond-ui"
       }
     },
+    {
+      "path": "pages/searching"
+    },
     "pages/counter",
     {
       "path": "packageA/logs",

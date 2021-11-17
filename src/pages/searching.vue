@@ -20,15 +20,17 @@
 </div>
 </div>
 </template>
+<script>
 export default {
   data () {
     return {
-      value1: '',
+      searchWords: '',
       current: 1
     }
   },
   methods: {
     pageChange (detail) {
+      console.log(this.$router.currentRoute.query.searchWords)
       if (detail.mp.detail.type === 'next' && this.current !== 5) {
         this.current++
       } else if (detail.mp.detail.type === 'prev' && this.current !== 1) {
