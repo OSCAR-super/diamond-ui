@@ -34,6 +34,18 @@ export default {
   },
   methods: {
     handleChange (detail) {
+      wx.request({
+        url: 'http://localhost:7001/cou/auth/lets',
+        data: {},
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: (res) => {
+          console.log(res.data)
+          // this.setData({})
+        }
+      })
       this.current = detail.mp.detail.key
     }
   }
