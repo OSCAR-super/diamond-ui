@@ -35,6 +35,7 @@
     "i-card": "../../../static/iview/card/index",
     "i-row": "../../../static/iview/row/index",
     "i-col": "../../../static/iview/col/index",
-    "i-page": "../../../static/iview/page/index"
+    "i-page": "../../../static/iview/page/index",
+    "i-modal": "../../../static/iview/modal/index"
   }
 }
