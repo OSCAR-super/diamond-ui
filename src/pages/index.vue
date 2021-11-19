@@ -58,7 +58,7 @@ export default {
           success (res) {
             console.log(res.code)
             wx.request({
-              url: 'http://localhost:7001/cou/auth/userWxLogin',
+              url: 'http://389f80y058.zicp.vip/cou/auth/userWxLogin',
               data: {
                 code: res.code
               },
