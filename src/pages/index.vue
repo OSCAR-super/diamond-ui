@@ -1,5 +1,6 @@
 <template>
 <div>
+  <i-modal title="您未登录！" :visible="visible" :actions="actions" :action-mode="vertical"><i-button open-type="getUserInfo" @getuserinfo="bindGetUserInfo" type="primary">获取权限</i-button></i-modal>
   <div v-if="current == 'remind'">
     <smile></smile>
   </div>
@@ -28,7 +29,10 @@ import problem from '@/components/problem'
 export default {
   data () {
     return {
-      current: 'homepage'
+      current: 'homepage',
+      visible: false,
+      actions: [{}],
+      userInfo: {}
     }
   },
   components: {
@@ -38,21 +42,64 @@ export default {
     problem
   },
   methods: {
-    handleChange (detail) {
-      wx.request({
-        url: 'http://localhost:7001/cou/auth/lets',
-        data: {},
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-        success: (res) => {
+    bindGetUserInfo (e) {
+      console.log(e)
+      if (e.mp.detail.userInfo) {
+        this.userInfo = e.mp.detail.userInfo
+        wx.setStorage({
+          key: 'nickName',
+          data: this.userInfo.nickName
+        })
+        wx.setStorage({
+          key: 'avatarUrl',
+          data: this.userInfo.avatarUrl
+        })
+        wx.login({
+          success (res) {
+            console.log(res.code)
+            wx.request({
+              url: 'http://localhost:7001/cou/auth/userWxLogin',
+              data: {
+                code: res.code
+              },
+              method: 'POST',
+              header: {
+                'content-type': 'application/json'
+              },
+              success: (res) => {
+                console.log(res.data.data.token)
+                wx.setStorage({
+                  key: 'token',
+                  data: res.data.data.token
+                })
+              }
+            })
+          },
+          fail: (res) => {
+            console.log('LOGIN失败', res)
+          }
+        })
+        this.visible = false
+      }
+    },
+    verifyToken () {
+      var that = this
+      wx.getStorage({
+        key: 'token',
+        success (res) {
           console.log(res.data)
-          // this.setData({})
+        },
+        fail () {
+          that.visible = true
         }
       })
+    },
+    handleChange (detail) {
       this.current = detail.mp.detail.key
     }
+  },
+  mounted () {
+    this.verifyToken()
   }
 }
 </script>
