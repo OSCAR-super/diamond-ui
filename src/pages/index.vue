@@ -13,9 +13,9 @@
     <problem></problem>
   </div>
 <i-tab-bar class="flex" :current="current" color="#f759ab" @change="handleChange">
-    <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
-    <i-tab-bar-item key="group" icon="group" current-icon="group_fill" title="朋友"></i-tab-bar-item>
-    <i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" title="通知"></i-tab-bar-item>
+    <i-tab-bar-item key="homepage" icon="browse" current-icon="browse_fill" title="发现"></i-tab-bar-item>
+    <i-tab-bar-item key="group" icon="search" current-icon="searchfill" title="问题搜索"></i-tab-bar-item>
+    <i-tab-bar-item key="remind" icon="emoji" current-icon="emoji_fill" title="每日一笑"></i-tab-bar-item>
     <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的"></i-tab-bar-item>
 </i-tab-bar>
 </div>
@@ -61,6 +61,6 @@ export default {
 .flex{
   position:absolute;
   width:100%;
-  top:90%;
+  top:92%;
 }
 </style>
