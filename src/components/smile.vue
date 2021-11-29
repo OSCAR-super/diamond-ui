@@ -31,6 +31,7 @@ export default {
   data () {
     return {
       visible: false,
+      token: '',
       starIndex: 4,
       actions: [
         {
@@ -42,7 +43,28 @@ export default {
   },
   methods: {
     activity () {
-      this.visible = true
+      var that = this
+      wx.getStorage({
+        key: 'token',
+        success (res) {
+          console.log(res.data)
+          that.token = res.data
+          wx.request({
+            url: 'http://389f80y058.zicp.vip/cou/user/sign',
+            data: {},
+            method: 'POST',
+            header: {
+              'content-type': 'application/json',
+              'token': that.token
+            },
+            success: (res) => {
+              console.log(res)
+              console.log(that.token)
+              that.visible = true
+            }
+          })
+        }
+      })
     },
     handleClose () {
       this.visible = false
