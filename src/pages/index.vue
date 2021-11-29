@@ -1,6 +1,7 @@
 <template>
 <div>
-  <i-modal title="您未登录！" :visible="visible" :actions="actions" :action-mode="vertical"><i-button open-type="getUserInfo" @getuserinfo="bindGetUserInfo" type="primary">获取权限</i-button></i-modal>
+  <i-modal title="您未登录！" :visible="visible" :actions="actions" :action-mode="vertical"><i-button  @click
+  ="bindGetUserInfo" type="primary">获取权限</i-button></i-modal>
   <div v-if="current == 'remind'">
     <smile></smile>
   </div>
@@ -42,45 +43,52 @@ export default {
     problem
   },
   methods: {
-    bindGetUserInfo (e) {
-      console.log(e)
-      if (e.mp.detail.userInfo) {
-        this.userInfo = e.mp.detail.userInfo
-        wx.setStorage({
-          key: 'nickName',
-          data: this.userInfo.nickName
-        })
-        wx.setStorage({
-          key: 'avatarUrl',
-          data: this.userInfo.avatarUrl
-        })
-        wx.login({
-          success (res) {
-            console.log(res.code)
-            wx.request({
-              url: 'http://389f80y058.zicp.vip/cou/auth/userWxLogin',
-              data: {
-                code: res.code
-              },
-              method: 'POST',
-              header: {
-                'content-type': 'application/json'
-              },
-              success: (res) => {
-                console.log(res.data.data.token)
-                wx.setStorage({
-                  key: 'token',
-                  data: res.data.data.token
+    bindGetUserInfo () {
+      var userProfile
+      var that = this
+      wx.getUserProfile({
+        desc: '用于获取自己的头像',
+        success (res) {
+          userProfile = res.userInfo
+          if (userProfile) {
+            that.userInfo = userProfile
+            wx.setStorage({
+              key: 'nickName',
+              data: that.userInfo.nickName
+            })
+            wx.setStorage({
+              key: 'avatarUrl',
+              data: that.userInfo.avatarUrl
+            })
+            wx.login({
+              success (res) {
+                console.log(res.code)
+                wx.request({
+                  url: 'http://389f80y058.zicp.vip/cou/auth/userWxLogin',
+                  data: {
+                    code: res.code
+                  },
+                  method: 'POST',
+                  header: {
+                    'content-type': 'application/json'
+                  },
+                  success: (res) => {
+                    console.log(res.data.data.token)
+                    wx.setStorage({
+                      key: 'token',
+                      data: res.data.data.token
+                    })
+                  }
                 })
+              },
+              fail: (res) => {
+                console.log('LOGIN失败', res)
               }
             })
-          },
-          fail: (res) => {
-            console.log('LOGIN失败', res)
+            that.visible = false
           }
-        })
-        this.visible = false
-      }
+        }
+      })
     },
     verifyToken () {
       var that = this
@@ -88,6 +96,7 @@ export default {
         key: 'token',
         success (res) {
           console.log(res.data)
+          that.visible = true
         },
         fail () {
           that.visible = true
@@ -108,6 +117,6 @@ export default {
 .flex{
   position:absolute;
   width:100%;
-  top:92%;
+  top:90%;
 }
 </style>
