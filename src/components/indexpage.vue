@@ -16,7 +16,7 @@
       <view slot="footer">尾部内容</view>
   </i-card>
 </div>
-<div>
+<div class="page">
 <i-page :current="current" total="5" @change="pageChange">
     <view slot="prev">
         <i-icon type="return"></i-icon>
@@ -56,4 +56,8 @@ export default {
   }
 }
 </script>
-<style></style>
+<style>
+.page{
+  margin-top:20px;
+}
+</style>

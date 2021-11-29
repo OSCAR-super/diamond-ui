@@ -1,7 +1,7 @@
 <template>
 <div>
 <div class="avatar">
-    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="large"></i-avatar>名字
+    <i-avatar :src="avatarUrl" size="large"></i-avatar>{{ nickName }}
 </div>
 <div class="grid">
 <i-grid>
@@ -47,6 +47,36 @@
 </div>
 </div>
 </template>
+<script>
+export default {
+  data () {
+    return {
+      nickName: '',
+      avatarUrl: ''
+    }
+  },
+  methods: {
+    getUserIndex () {
+      var that = this
+      wx.getStorage({
+        key: 'avatarUrl',
+        success (res) {
+          that.avatarUrl = res.data
+        }
+      })
+      wx.getStorage({
+        key: 'nickName',
+        success (res) {
+          that.nickName = res.data
+        }
+      })
+    }
+  },
+  mounted () {
+    this.getUserIndex()
+  }
+}
+</script>
 <style>
 .avatar{
   position: absolute;
